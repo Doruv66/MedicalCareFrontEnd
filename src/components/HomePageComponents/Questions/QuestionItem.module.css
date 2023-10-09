@@ -1,0 +1,56 @@
+.section {
+    max-width: 700px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #aaa;
+    cursor: pointer;
+}
+
+.question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.question h3 {
+    margin-top: 1rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+.answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 1.4s ease;
+}
+.answer p {
+    padding-top: 1rem;
+    line-height: 1.6;
+    font-size: 1.4rem;
+}
+
+.active .answer{
+    max-height: 300px;
+    max-width: 700px;
+    animation: fade 1s ease-in-out;
+    border-bottom: 2px solid #aaa;
+}
+
+.active .down {
+    transform: rotate(180deg);
+}
+
+.down {
+    transition: transform 0.5s ease-in;
+}
+
+@keyframes fade {
+    from{
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}

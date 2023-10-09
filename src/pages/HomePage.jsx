@@ -1,6 +1,12 @@
+import HomeHero from "../components/HomePageComponents/HomeHero"
+import Questions from "../components/HomePageComponents/Questions/Questions";
+import style from './HomePage.module.css'
 function HomePage() {
     return (
-        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci ipsa velit illo, quidem, odit maiores delectus cum cupiditate eligendi rerum corrupti voluptate veniam! Magnam minus soluta adipisci odio dolorem perferendis.</div>
+        <>
+            <HomeHero />
+            <Questions />
+        </>
     )
 }
 

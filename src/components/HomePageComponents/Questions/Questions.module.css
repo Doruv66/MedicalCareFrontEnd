@@ -1,0 +1,26 @@
+.section{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.section div {
+    margin: auto;
+}
+
+h1{
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+@media(max-width: 790px){
+    .section {
+        flex-direction: column;
+        height: auto;
+        align-items: center; 
+      }
+    
+      .section div {
+        max-width: 100%; 
+      }
+}

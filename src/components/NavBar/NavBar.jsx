@@ -28,8 +28,8 @@ function NavBar() {
         },
         {
             id: 4,
-            path: "/contact",
-            text: "Contact Us"
+            path: "/login",
+            text: "Login"
         }
     ]
 

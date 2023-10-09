@@ -1,0 +1,41 @@
+.hero__banner {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 500px;
+    justify-content: space-between;
+}
+.hero__banner div {
+    margin: auto;
+}
+
+.hero__text p {
+    margin: 20px;
+    width: 600px;
+}
+
+.hero__quote {
+    display: flex;
+    font-size: 3rem;
+}
+
+.hero__para{
+    font-weight: 700;
+}
+
+@media(max-width: 790px){
+    .hero__banner {
+        flex-direction: column;
+        height: auto;
+        align-items: center; 
+      }
+    
+      .hero__text p {
+        width: auto;
+        text-align: center; 
+      }
+    
+      .hero__animation img {
+        max-width: 100%; 
+      }
+}
