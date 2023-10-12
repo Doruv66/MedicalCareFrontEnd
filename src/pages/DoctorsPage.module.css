@@ -1,0 +1,23 @@
+.doctor_content{
+    min-height: 75vh;
+}
+
+.doctors {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.doctors li {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.doctors li img {
+    animation: fadeIn 2s
+}
+
+@keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}

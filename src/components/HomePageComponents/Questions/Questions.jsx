@@ -8,8 +8,8 @@ const Questions = () => {
     <>
         <h1>Popular Questions</h1>
         <div className={style.section}>
-            <QuestionsBanner/>
-            <div>
+            <QuestionsBanner />
+            <div className={style.questions}>
             <QuestionList />
             </div>
         </div>
