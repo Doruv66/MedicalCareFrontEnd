@@ -24,3 +24,5 @@ https://docs.google.com/document/d/1x-GmQSBhwyfs6G0kMcnol3TZdrTFdaEe/edit?usp=dr
 https://dorianvieru.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog
 
 ## SAD
+
+https://docs.google.com/document/d/1h83ET70vEXiRPgcXJrI_pSquHtDmHABSqnQsSP1YEkU/edit
