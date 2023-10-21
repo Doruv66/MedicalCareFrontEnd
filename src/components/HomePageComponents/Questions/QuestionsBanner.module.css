@@ -1,0 +1,53 @@
+.image {
+    animation: appearDissapear 7s infinite ease forwards;
+}
+
+@keyframes appearDissapear {
+    0% {
+        opacity: 0;
+        transform: rotate(0deg) scale(0.1);
+    }
+
+
+    30% {
+        opacity: 1;
+        transform: rotate(360deg) scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: rotate(360deg) scale(1.2);
+    }
+
+    60% {
+        opacity: 0.7;
+    }
+
+    70% {
+        opacity: 0.5;
+    }
+
+    80% {
+        opacity: 0.2;
+        transform: rotate(0deg) scale(0);
+    }
+
+    90% {
+        opacity: 0;
+        transform: rotate(0deg) scale(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: rotate(0deg) scale(0);
+    }
+}
+
+@keyframes dissapear {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 0;
+    }
+}

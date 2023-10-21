@@ -2,6 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    
 }
 .section div {
     margin: auto;
@@ -9,9 +10,12 @@
 
 h1{
     text-align: center;
+    padding-bottom: 20px;
     font-size: 50px;
     font-weight: bold;
     text-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    animation: fadeIn 2s;
+    text-shadow: 2px 2px 4px #000000;
 }
 
 .questions {
@@ -21,6 +25,7 @@ h1{
     border-radius: 20px;
     backdrop-filter: blur(20px);
     box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    animation: fadeIn 2s;
 }
 
 @media(max-width: 790px){
@@ -33,4 +38,9 @@ h1{
       .section div {
         max-width: 100%; 
       }
+}
+
+@keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
 }

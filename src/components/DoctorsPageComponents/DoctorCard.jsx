@@ -1,11 +1,13 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import style from './DoctorCard.module.css'
-import { FiArrowRightCircle } from 'react-icons/fi'
+import { CiLogin } from 'react-icons/ci'
 import { AiTwotoneStar } from 'react-icons/ai'
 import reviewsAPI from '../../API/ReviewsAPI'
+import { useNavigate } from 'react-router-dom'
 
 const DoctorCard = ({doctor}) => {
+    const navigate = useNavigate();
     const [image, setImage] = useState(null);
     const [average, setAverage] = useState(0);
 
@@ -18,22 +20,20 @@ const DoctorCard = ({doctor}) => {
     }
 
     useEffect(() => {
-        refreshAverage(doctor.accountId);
-    }, [])
-    useEffect(() => {
       const importImage = async () => {
         const imageModule = await import(`../../assets/${doctor.photo}.png`);
         setImage(imageModule.default);
       };
   
       importImage();
+      refreshAverage(doctor.accountId);
     }, [doctor.photo]);
 
   return (
     <div className={style.card}>
         <img src={ image } alt="doctor image" />
         <div className={style.name}>
-            <h3>{doctor.name} {doctor.fname}</h3>
+            <h3>Dr. {doctor.name} {doctor.fname}</h3>
         </div>
         <div className={style.information}>
             <div>
@@ -46,7 +46,11 @@ const DoctorCard = ({doctor}) => {
         </div>
         <div className={style.btn}>
             <p>St Anna Ziekenhuis</p>
-            <FiArrowRightCircle />
+            <CiLogin 
+            className={style.icon}
+            onClick={() => {
+                navigate(`/doctor/${doctor.accountId}`)
+            }}/>
         </div>
     </div>
   )

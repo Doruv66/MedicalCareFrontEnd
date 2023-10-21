@@ -12,12 +12,14 @@
     border-radius: 20px;
     backdrop-filter: blur(20px);
     box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    animation: fadeIn 1s;
 }
 
 .card img {
     width: 230px;
     height:330px;
     border-radius: 15px;
+    animation: fadeIn 2s;
 }
 .name {
     display: flex;
@@ -31,6 +33,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    animation: fadeIn 2.5s;
 }
 
 .card .information {
@@ -61,8 +64,20 @@
     cursor: pointer;
     margin-bottom: 10px;
 }
+.card .btn .icon {
+    transition: padding-right 0.3s;
+}
+
+.card .btn .icon:hover {
+    padding-right: 5px;
+}
 
 .card .btn p {
     margin-left: 10px;
     font-size: 12px;
+}
+
+@keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
 }
