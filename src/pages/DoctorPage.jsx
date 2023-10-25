@@ -32,7 +32,7 @@ const DoctorPage = () => {
             <DescriptionReviews doctor={doctor}/>
           </div>
           <div className={style.timeslots}>
-            <DoctorTimeSlots />
+            <DoctorTimeSlots doctor={doctor}/>
           </div>
           
         </div>
