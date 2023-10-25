@@ -22,13 +22,24 @@ const DoctorPage = () => {
     getDoctor(id);
   }, [id])
 
-    return (
+  return (
     <div>
-      <div>
-        <DoctorWelcomeCard />
-        <DescriptionReviews />
-      </div>
-      <DoctorTimeSlots />
+      {
+        doctor !== null  ? (
+        <div className={style.wrapper}>
+          <div className={style.doctor_content}>
+            <DoctorWelcomeCard doctor={doctor}/>
+            <DescriptionReviews doctor={doctor}/>
+          </div>
+          <div className={style.timeslots}>
+            <DoctorTimeSlots />
+          </div>
+          
+        </div>
+        ) : (
+          <h1>Not found</h1>
+        )
+      }
     </div>
   )
 }

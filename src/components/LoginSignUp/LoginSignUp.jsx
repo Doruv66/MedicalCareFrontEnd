@@ -26,7 +26,6 @@ const LoginSignUp = () => {
                     <p>Don't have an account? 
                         <a href="#" className={style.register_link} onClick={() => {
                             setActive(!active);
-                            console.log(active);
                         }}>
                             Register
                         </a>
@@ -52,7 +51,6 @@ const LoginSignUp = () => {
                     <p>Already have an account?  
                         <a href="#" className={style.login_link} onClick={() => {
                             setActive(!active);
-                            console.log(active);
                         }}>
                             Login
                         </a>
