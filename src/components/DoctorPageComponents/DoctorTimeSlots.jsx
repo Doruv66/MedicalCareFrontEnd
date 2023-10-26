@@ -2,7 +2,7 @@ import React from 'react';
 import style from './DoctorTimeSlots.module.css';
 
 const DoctorTimeSlots = ({ doctor }) => {
-  const availableTimeSlots = doctor.availableTimeSlots || [];
+  const availableTimeSlots = doctor.availableTimeSlots;
 
   const dayTimeRanges = {};
 
