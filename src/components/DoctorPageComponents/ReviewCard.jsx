@@ -23,7 +23,7 @@ const ReviewCard = ({review}) => {
     }
 
     useEffect(() => {
-        refreshAccount(review.userId);
+        refreshAccount(review.user.accountId);
         setDate(formatDate(review.date));
     }, [])
     
