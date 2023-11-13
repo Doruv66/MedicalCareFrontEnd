@@ -5,7 +5,7 @@ const DoctorTimeSlots = ({ doctor }) => {
   const availableTimeSlots = doctor.availableTimeSlots;
 
   const dayTimeRanges = {};
-
+  
   availableTimeSlots.forEach((timeSlot) => {
     const startTime = new Date(timeSlot.startTime);
     const endTime = new Date(timeSlot.endTime);
@@ -24,6 +24,7 @@ const DoctorTimeSlots = ({ doctor }) => {
   return (
     <div className={style.wrapper}>
       <h2>Available Time Slots</h2>
+      <h3>For this week :</h3>
       <ul>
         {daysOfWeek.map((day) => (
           <li key={day}>

@@ -11,7 +11,7 @@ const ReviewCard = ({review}) => {
     const refreshAccount = (id) => {
         accountsAPI.getAccount(id)
         .then((response) => {
-            setAccount(response.data);
+            setAccount(response.data.account);
         })
         .catch((error) => console.log(error))
     }
@@ -23,7 +23,7 @@ const ReviewCard = ({review}) => {
     }
 
     useEffect(() => {
-        refreshAccount(review.user.accountId);
+        refreshAccount(review.patient.accountId);
         setDate(formatDate(review.date));
     }, [])
     

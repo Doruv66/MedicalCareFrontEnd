@@ -33,7 +33,7 @@ const DoctorCard = ({doctor}) => {
     <div className={style.card}>
         <img src={ image } alt="doctor image" />
         <div className={style.name}>
-            <h3>Dr. {doctor.name} {doctor.fname}</h3>
+            <h3>Dr. {doctor.firstName} {doctor.lastName}</h3>
         </div>
         <div className={style.information}>
             <div>

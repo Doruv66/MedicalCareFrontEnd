@@ -13,7 +13,7 @@ const DoctorPage = () => {
   const getDoctor = (id) => {
     accountsAPI.getAccount(id)
     .then((response) => {
-      setDoctor(response.data)
+      setDoctor(response.data.account)
     })
     .catch((error) => console.log(error))
   }

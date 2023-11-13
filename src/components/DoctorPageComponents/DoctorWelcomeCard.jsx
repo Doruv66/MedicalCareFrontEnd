@@ -32,7 +32,7 @@ const DoctorWelcomeCard = ({doctor}) => {
       </div>
       <div>
       <div className={style.information}>
-            <h3>Dr. {doctor.name} {doctor.fname}</h3>
+            <h3>Dr. {doctor.firstName} {doctor.lastName}</h3>
             <div>
                 <p>{doctor.specialization}</p>
             </div>
