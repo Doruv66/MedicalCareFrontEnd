@@ -49,7 +49,7 @@ const DoctorCard = ({doctor}) => {
             <CiLogin 
             className={style.icon}
             onClick={() => {
-                navigate(`/doctor/${doctor.accountId}`)
+                navigate(`/doctors/${doctor.accountId}`)
             }}/>
         </div>
     </div>

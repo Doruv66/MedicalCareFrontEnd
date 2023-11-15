@@ -20,7 +20,6 @@ const DoctorWelcomeCard = ({doctor}) => {
       const imageModule = await import(`../../assets/${doctor.photo}.png`);
       setImage(imageModule.default);
     };
-
     importImage();
     refreshAverage(doctor.accountId);
   }, [])

@@ -1,9 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import style from './DoctorTimeSlots.module.css';
 
 const DoctorTimeSlots = ({ doctor }) => {
   const availableTimeSlots = doctor.availableTimeSlots;
-
+  const navigate = useNavigate();
   const dayTimeRanges = {};
   
   availableTimeSlots.forEach((timeSlot) => {
@@ -34,7 +35,9 @@ const DoctorTimeSlots = ({ doctor }) => {
           </li>
         ))}
       </ul>
-      <button>Book Appointment</button>
+      <button onClick={() => {
+          navigate(`/appointments/${doctor.accountId}`)
+      }}>Book Appointment</button>
     </div>
   );
 };

@@ -7,7 +7,6 @@ function NavBar() {
     const [active, setActive] = useState(false)
     const toggle = () => {
         setActive(!active);
-        console.log(active);
     }
 
     const links = [

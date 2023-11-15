@@ -19,7 +19,7 @@ const DoctorPage = () => {
   }
 
   useEffect(() => {
-    getDoctor(id);
+    getDoctor(id);      
   }, [id])
 
   return (
