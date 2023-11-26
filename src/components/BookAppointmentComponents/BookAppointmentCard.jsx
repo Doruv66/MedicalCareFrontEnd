@@ -4,11 +4,13 @@ import DropDown from './DropDown'
 import timeSlotsAPI from '../../API/TimeSlotsAPI';
 import appointmentsAPI from '../../API/AppointmentsAPI';
 import { useNavigate } from 'react-router-dom';
+import { useUser } from '../Context/UserContext';
 
 const BookAppointmentCard = ({doctor}) => {
     const [date, setDate] = useState(null);
     const [availableTimeSlots, setAvailableTimeSlots] = useState(null);
     const [selectedTimeSlot, setSelectedTimeSlot] = useState(null);
+    const user = useUser();
     const navigate = useNavigate();
 
     const formattedFutureDates = doctor.availableTimeSlots
@@ -60,10 +62,7 @@ const BookAppointmentCard = ({doctor}) => {
       console.log(matchingTimeSlot);
       appointmentsAPI.createAppointment({
         timeSlot: matchingTimeSlot,
-        patient: {
-          accountId: 9,
-          accountType: "PATIENT"
-        },
+        patient: user,
         doctor: doctor,
         appointmentStatus: "BOOKED"
       })

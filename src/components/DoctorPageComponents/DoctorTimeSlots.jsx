@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import style from './DoctorTimeSlots.module.css';
+import { useUser } from '../Context/UserContext';
 
 const DoctorTimeSlots = ({ doctor }) => {
   const availableTimeSlots = doctor.availableTimeSlots;
@@ -36,7 +37,7 @@ const DoctorTimeSlots = ({ doctor }) => {
         ))}
       </ul>
       <button onClick={() => {
-          navigate(`/appointments/${doctor.accountId}`)
+          navigate(`/appointments/${doctor.accountId}`) 
       }}>Book Appointment</button>
     </div>
   );

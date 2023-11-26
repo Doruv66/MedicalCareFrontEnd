@@ -96,6 +96,7 @@
 .login_register p a {
     color: #fff;
     text-decoration: none;
+    cursor: pointer;
     font-weight: 600;
     margin-left: 5px;
 }

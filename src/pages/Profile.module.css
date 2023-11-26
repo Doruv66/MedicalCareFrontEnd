@@ -1,0 +1,43 @@
+.wrapper {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.user_image img {
+    animation: float 6s ease-in-out infinite;
+}
+
+.user_image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    width: 450px;
+    height: 430px;
+    border: 2px solid rgba(255, 255, 255, .5);
+    border-radius: 15px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+}
+
+.user_information {
+    border: 2px solid rgba(255, 255, 255, .5);
+    border-radius: 15px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    margin-bottom: 15px;
+}
+
+@keyframes float {
+    0% {
+      transform: translatey(0px);
+    }
+    50% {
+      transform: translatey(-20px);
+    }
+    100% {
+      transform: translatey(0px);
+    }
+  }
