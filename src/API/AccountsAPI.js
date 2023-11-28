@@ -12,6 +12,18 @@ const accountsAPI = {
         } catch (error) {
             throw error;
         }
+    },
+    updatePatient: async (id, data) => {
+        try {
+            const response = axios.put(`${API_URL}/update-patient/${id}`, data, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                }
+            })
+            return (await response).data;
+        } catch (error) {
+            throw error;    
+        }
     }
 }
 

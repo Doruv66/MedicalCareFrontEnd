@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import style from './LoginInput.module.css'
+import style from './Input.module.css'
 
-const LoginInput = (props) => {
+const Input = (props) => {
 
   const handleBlur = (value) => {
     if (props.validator(value)) {
@@ -16,11 +16,12 @@ const LoginInput = (props) => {
         <span className={style.icon}>{props.icon}</span>
         <input type={props.type} 
         onChange={(e) => props.setProperty(e.target.value)} 
-        onBlur={(e) => handleBlur(e.target.value)}  
+        onBlur={(e) => handleBlur(e.target.value)} 
+        value={props.value} 
         required/>
         <label>{props.name}</label>
     </div>
   )
 }
 
-export default LoginInput
+export default Input

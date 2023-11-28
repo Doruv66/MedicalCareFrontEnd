@@ -5,8 +5,10 @@
     justify-content: space-around;
 }
 
-.user_image img {
-    animation: float 6s ease-in-out infinite;
+.user_image div {
+  margin-top: 30px;
+  animation: float 6s ease-in-out infinite;
+  font-size: 270px;
 }
 
 .user_image {

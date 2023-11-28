@@ -5,6 +5,8 @@ import timeSlotsAPI from '../../API/TimeSlotsAPI';
 import appointmentsAPI from '../../API/AppointmentsAPI';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../Context/UserContext';
+import { toast } from 'react-toastify';
+import Toasts from '../Toasts/Toasts';
 
 const BookAppointmentCard = ({doctor}) => {
     const [date, setDate] = useState(null);
@@ -68,7 +70,8 @@ const BookAppointmentCard = ({doctor}) => {
       })
       .then((response) => console.log(response))
       .catch((error) => console.log(error))
-      navigate("/")
+      navigate("/");
+      Toasts.success('Appointment booked succesfuly');
     }
 
   return (

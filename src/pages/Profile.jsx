@@ -4,6 +4,7 @@ import { useUser } from '../components/Context/UserContext'
 import Error401 from '../components/ErrorComponents/Error401';
 import image from '../assets/profilePicture.png'
 import ProfileInformation from '../components/ProfileInformation/ProfileInformation';
+import { FaHospitalUser } from "react-icons/fa6";
 
 
 const Profile = () => {
@@ -16,7 +17,9 @@ const Profile = () => {
   return (
         <div className={style.wrapper}>
             <div className={style.user_image}>
-                <img src={image} alt="user profile image" />
+                <div>
+                    <FaHospitalUser />
+                </div>  
             </div>
             <div className={style.user_information}>
                 <ProfileInformation />
