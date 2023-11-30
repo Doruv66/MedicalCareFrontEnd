@@ -1,0 +1,14 @@
+.map_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.map_container {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.map_container h1 {
+    margin-bottom: 20px;
+}

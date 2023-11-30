@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useUpdateUser } from '../components/Context/UserContext';
+import Toasts from '../components/Toasts/Toasts.jsx'
 
 const Logout = () => {
     const navigate = useNavigate();
@@ -10,6 +11,7 @@ const Logout = () => {
             localStorage.removeItem("token");
             setUser(null);
             navigate("/");
+            Toasts.info('Logged out')
         } else {
             navigate("/")
         }

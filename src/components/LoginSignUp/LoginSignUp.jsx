@@ -58,7 +58,7 @@ const LoginSignUp = () => {
                 }
             }
         } else {
-            Toasts.error("Please complete the form with valid data");
+            Toasts.warn("Please complete the form with valid data");
         }
     }
 
@@ -91,7 +91,7 @@ const LoginSignUp = () => {
                 }
             }   
         } else {
-            Toasts.error("Provide valid data for login")
+            Toasts.warn("Provide valid data for login")
         }
     }
 

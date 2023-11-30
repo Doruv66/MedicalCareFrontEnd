@@ -55,6 +55,7 @@ ul li a {
     display: block;
     text-transform: capitalize;
     text-decoration: none;
+    cursor: default;
     color: #bdb6b6;
     transition: 0.4s;
 }

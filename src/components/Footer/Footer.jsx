@@ -1,6 +1,5 @@
 import React from 'react'
 import styles from './Footer.module.css'
-import { useState, useEffect } from 'react'
 
 const Footer = () => {
     const content = [
@@ -37,9 +36,9 @@ const Footer = () => {
                 <div className={styles.footer_col} key={index}>
                     <h4>{contentItem.name}</h4>
                     <ul>
-                        <li><a href="#">{contentItem.content1}</a></li>
-                        <li><a href="#">{contentItem.content2}</a></li>
-                        <li><a href="#">{contentItem.content3}</a></li>
+                        <li><a>{contentItem.content1}</a></li>
+                        <li><a>{contentItem.content2}</a></li>
+                        <li><a>{contentItem.content3}</a></li>
                     </ul>
                 </div>
             ))}
