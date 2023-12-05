@@ -12,7 +12,6 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { useUser } from '../Context/UserContext';
 import accountsAPI from '../../API/AccountsAPI';
-import 'react-toastify/dist/ReactToastify.css';
 import Toasts from '../Toasts/Toasts';
 import userValidators from '../Validators/UserValidators';
 

@@ -57,7 +57,7 @@ const DoctorCard = ({ doctor }) => {
         </div>
         <div className={style.reviews}>
           <AiTwotoneStar className={style.star} />
-          {average}
+          {average.toFixed(1)}
         </div>
       </div>
       <div className={style.btn}>

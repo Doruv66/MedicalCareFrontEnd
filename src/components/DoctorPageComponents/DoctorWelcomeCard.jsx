@@ -37,7 +37,7 @@ const DoctorWelcomeCard = ({doctor}) => {
             </div>
             <div className={style.reviews}>
                 <AiTwotoneStar className={style.star}/> 
-                {average}
+                {average.toFixed(1)}
             </div>
             <p>Specialization in {doctor.specialization}</p>
         </div>

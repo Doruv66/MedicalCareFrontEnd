@@ -7,3 +7,10 @@
 .topdoctors {
     margin-top: 40px;
 }
+
+.topdoctors h1 {
+    margin-top: 70px;
+    margin-bottom: 40px;
+    padding-top: 3px;
+    box-shadow: 0 0 30px 0 ;    
+}

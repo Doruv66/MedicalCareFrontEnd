@@ -11,7 +11,7 @@ const Logout = () => {
             localStorage.removeItem("token");
             setUser(null);
             navigate("/");
-            Toasts.info('Logged out')
+            Toasts.info('Logged out') 
         } else {
             navigate("/")
         }

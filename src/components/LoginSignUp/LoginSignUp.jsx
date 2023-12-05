@@ -28,7 +28,6 @@ const LoginSignUp = () => {
     const navigate = useNavigate();
     const [loginData, setLoginData] = useState(Login); 
     const [patientData, setPatientData] = useState(Patient); 
-    console.log(loginData)
 
     const handleLoginChange = (key, value) => {
         setLoginData({ ...loginData, [key]: value });
@@ -50,9 +49,9 @@ const LoginSignUp = () => {
                 Toasts.success('Account created with success');
             } catch(error) {
                 if(error.response.data === "USERNAME_ALREADY_EXISTS") {
-                    setErrorMessageSignUp("This username is already used, please use another one")
+                    Toast.warn("This username is already used, please use another one")
                 } else if(error.response.data === "EMAIL_ALREADY_EXISTS") {
-                    setErrorMessageSignUp("This email is already used, please use another one")
+                    Toasts.warn("This email is already used, please use another one")
                 } else {
                     setErrorMessageSignUp(error.response.data);
                 }
@@ -83,9 +82,9 @@ const LoginSignUp = () => {
                 }
             } catch (error) {
                 if(error.response.data === "USERNAME_NOT_FOUND") {
-                    setErrorMessageLogin("There is no user with provided username")
+                    Toasts.error("There is no user with provided username")
                 } else if(error.response.data === "WRONG_PASSWORD") {
-                    setErrorMessageLogin("Incorrect password!!!")
+                    Toasts.error("This combination of password and username is not correct")
                 } else {
                     setErrorMessageLogin(error.response.data);
                 }

@@ -13,7 +13,7 @@ const MapComponent = () => {
           <MapContainer
             center={[51.41753388277643, 5.477695184472583]}
             zoom={12}
-            style={{ height: '450px', width: '650px', borderRadius: '40px' }}
+            style={{ height: '450px', width: '650px' }}
           >
             <TileLayer
               url="https://api.maptiler.com/maps/nl-cartiqo-dark/256/{z}/{x}/{y}.png?key=KImueNQkJ0uQeorxlQNS"
