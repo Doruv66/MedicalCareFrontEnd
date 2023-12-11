@@ -49,7 +49,7 @@ const LoginSignUp = () => {
                 Toasts.success('Account created with success');
             } catch(error) {
                 if(error.response.data === "USERNAME_ALREADY_EXISTS") {
-                    Toast.warn("This username is already used, please use another one")
+                    Toasts.warn("This username is already used, please use another one")
                 } else if(error.response.data === "EMAIL_ALREADY_EXISTS") {
                     Toasts.warn("This email is already used, please use another one")
                 } else {

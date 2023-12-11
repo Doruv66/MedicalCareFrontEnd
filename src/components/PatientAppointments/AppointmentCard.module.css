@@ -1,0 +1,97 @@
+.btn {
+    width: 90%;
+    height: 45px;
+    background-color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    color: #000000;
+    transition: all .2s;
+}
+
+.appointment_card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid rgba(255, 255, 255, .5);
+    border-radius: 15px;
+    backdrop-filter: blur(50px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+}
+
+.wrapper {
+    display: flex;
+    width: 420px;
+}
+
+.app_info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.app_info p {
+    font-weight: 900;
+    text-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    text-shadow: 2px 2px 4px #000000;
+}
+
+.modal_wrapper {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 15px;
+    backdrop-filter: blur(50px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    max-width: 400px;
+  }
+  
+  .modal_heading {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 18px;
+  }
+  
+  .modal_buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .modal_buttons button {
+    margin-top: 50px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .modal_buttons button:nth-child(1) {
+    background-color: #a20303;    ;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 900;
+    color: #fff;
+  }
+  
+  .modal_buttons button:nth-child(2) {
+    background-color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 900;
+    color: #000000;
+  }
+
+  .custom_overlay {
+    background-color: transparent !important;
+  }

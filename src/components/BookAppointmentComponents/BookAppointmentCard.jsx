@@ -5,7 +5,6 @@ import timeSlotsAPI from '../../API/TimeSlotsAPI';
 import appointmentsAPI from '../../API/AppointmentsAPI';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../Context/UserContext';
-import { toast } from 'react-toastify';
 import Toasts from '../Toasts/Toasts';
 
 const BookAppointmentCard = ({doctor}) => {
@@ -56,12 +55,15 @@ const BookAppointmentCard = ({doctor}) => {
     } 
     
     const createAppointment = () => {
+      if(date === null && selectedTimeSlot === null) {
+        Toasts.warn("Please Select a Time Slot");
+        return;
+      }
       const matchingTimeSlot = availableTimeSlots.find(slot => {
         const startTime = new Date(slot.startTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
         const endTime = new Date(slot.endTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
         return selectedTimeSlot === `${startTime} - ${endTime}`;
       })
-      console.log(matchingTimeSlot);
       appointmentsAPI.createAppointment({
         timeSlot: matchingTimeSlot,
         patient: user,

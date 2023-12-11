@@ -68,7 +68,7 @@ function NavBar() {
 
     return (
         <header className={styles.header}>
-            <a className={styles.logo}>MedicalCare</a>
+            <a className={styles.logo} href="/">MedicalCare</a>
             <label className={styles.icon}>
                 <Hamburger onToggle={toggle}/>
             </label>
