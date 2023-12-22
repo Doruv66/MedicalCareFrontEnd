@@ -1,0 +1,40 @@
+.dashboard {
+    min-height: 82vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.dashboard h1 {
+    text-align: center;
+    margin-left: 30%;
+    padding: 5px;
+    letter-spacing: 3px;
+    width: 600px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    backdrop-filter: blur(50px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.dashboard .charts {
+    width: auto;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.dashboard .charts .chart {
+    text-align: center;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    backdrop-filter: blur(50px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    padding: 30px 80px;
+}
+
+.dashboard .charts .chart h2 {
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}

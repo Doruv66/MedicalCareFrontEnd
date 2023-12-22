@@ -4,28 +4,31 @@ import 'react-toastify/dist/ReactToastify.css';
 import NavBar from './components/NavBar/NavBar'
 import Router from './components/Router/Router'
 import  Footer  from './components/Footer/Footer'
-import { UserProvider } from './components/Context/UserContext'
+import { useUser } from './components/Context/UserContext';
 import { ToastContainer } from 'react-toastify'
+import { WebSocketProvider } from './components/Context/WebSocketContext';
 function App() {
+  const user = useUser();
+
   return (
-    <div className='app'>
-      <BrowserRouter>
-        <UserProvider>
-          <NavBar />
-            <Router/>
-          <Footer />
-          <ToastContainer toastStyle={{
-                    fontSize: "15px",
-                    color: "#fff",
-                    background: "transparent",
-                    border: "2px solid rgba(255, 255, 255, .5)",
-                    borderRadius: "10px",
-                    backdropFilter: "blur(50px)",
-                    boxShadow: "0 0 30px rgba(0, 0, 0, .5)"
-          }}/>
-        </UserProvider> 
-      </BrowserRouter>
-    </div>
+    <WebSocketProvider user={user}>
+        <div className='app'>
+          <BrowserRouter>
+              <NavBar />
+                <Router/>
+              <Footer />
+              <ToastContainer toastStyle={{
+                        fontSize: "15px",
+                        color: "#fff",
+                        background: "transparent",
+                        border: "2px solid rgba(255, 255, 255, .5)",
+                        borderRadius: "10px",
+                        backdropFilter: "blur(50px)",
+                        boxShadow: "0 0 30px rgba(0, 0, 0, .5)"
+              }}/>
+          </BrowserRouter>
+      </div>
+    </WebSocketProvider>
   )
 }
 

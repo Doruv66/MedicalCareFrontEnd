@@ -39,8 +39,11 @@ const BookAppointment = () => {
   }, [navigate]);
 
   if (user === null) {
-      return <Error401 />;
+    return <Error401 />;
+  } else if (user.accountType !== "PATIENT") {
+    return <Error401 />;
   }
+  
 
   return (
       doctor !== null ? (

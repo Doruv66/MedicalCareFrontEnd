@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import PatientCard from '../components/PatientAppointments/PatientCard';
 import appointmentsAPI from '../API/AppointmentsAPI';
 import AppointmentCard from '../components/PatientAppointments/AppointmentCard';
+import Error401 from '../components/ErrorComponents/Error401';
 
 const PatientAppointments = () => {
     const user = useUser();
@@ -34,12 +35,12 @@ const PatientAppointments = () => {
       }))})
       .catch(error => console.log(error))
     }
-
-    useEffect(() => {
+    useEffect(() => { 
       const timer = setTimeout(() => {
         if (!user && loading) {
           navigate("/login");
-        } else {
+        }
+        else {
           refreshPrevious(user.accountId);
           refreshUpcoming(user.accountId);
           setLoading(false);

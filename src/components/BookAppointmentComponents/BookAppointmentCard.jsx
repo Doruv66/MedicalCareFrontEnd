@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import style from './BookAppointmentCard.module.css'
 import DropDown from './DropDown'
+import { useWebSocket } from '../Context/WebSocketContext';
 import timeSlotsAPI from '../../API/TimeSlotsAPI';
 import appointmentsAPI from '../../API/AppointmentsAPI';
 import { useNavigate } from 'react-router-dom';
@@ -13,6 +14,7 @@ const BookAppointmentCard = ({doctor}) => {
     const [selectedTimeSlot, setSelectedTimeSlot] = useState(null);
     const user = useUser();
     const navigate = useNavigate();
+    const stompClient = useWebSocket();
 
     const formattedFutureDates = doctor.availableTimeSlots
       .filter(date => new Date(date.startTime) > new Date())
@@ -48,6 +50,25 @@ const BookAppointmentCard = ({doctor}) => {
       }
     };
 
+    const sendNotificationMessage = (doctorId, date) => {
+      if (!stompClient || !stompClient.connected) {
+        console.error("WebSocket client not connected.");
+        return;
+      }
+      console.log(date)
+      const payload = {
+        'content': `You have a new appointment booked on ${new Date(date).toISOString().split('T')[0]}`,
+        'receiverId': doctorId
+      };
+    
+      if (payload.content) {
+        stompClient.publish({
+          destination: `/user/${payload.receiverId}/queue/notifications`,
+          body: JSON.stringify(payload)
+        });
+      }
+    };
+
     const handleDateChange = (date) => {
       setDate(date);
       setSelectedTimeSlot(null);
@@ -73,6 +94,7 @@ const BookAppointmentCard = ({doctor}) => {
       .then((response) => console.log(response))
       .catch((error) => console.log(error))
       navigate("/");
+      sendNotificationMessage(doctor.accountId, matchingTimeSlot.startTime);
       Toasts.success('Appointment booked succesfuly');
     }
 

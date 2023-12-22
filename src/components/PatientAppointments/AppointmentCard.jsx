@@ -6,10 +6,12 @@ import appointmentsAPI from '../../API/AppointmentsAPI';
 import { useNavigate } from 'react-router-dom';
 import Toasts from '../Toasts/Toasts';
 import LeaveReview from './LeaveReview';
+import { useWebSocket } from '../Context/WebSocketContext';
 
 const AppointmentCard = ({appointment, previous}) => {
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const navigate = useNavigate();
+    const stompClient = useWebSocket();
     const openModal = () => {
       setModalIsOpen(true);
     };
@@ -18,11 +20,31 @@ const AppointmentCard = ({appointment, previous}) => {
       setModalIsOpen(false);
     };
 
-    const handleCancel = (appId) => {
-      appointmentsAPI.deleteAppointment(appId);
+    const handleCancel = () => {
+      appointmentsAPI.deleteAppointment(appointment.appointmentId);
+      sendNotificationMessage(appointment.doctor.accountId, appointment.timeSlot.startTime)
       navigate("/")
       Toasts.info("Appointment Cancelled")
       closeModal();
+    };
+
+    const sendNotificationMessage = (doctorId, date) => {
+      if (!stompClient || !stompClient.connected) {
+        console.error("WebSocket client not connected.");
+        return;
+      }
+    
+      const payload = {
+        'content': `One of your appointments was cancelled on ${new Date(date).toISOString().split('T')[0]}`,
+        'receiverId': doctorId
+      };
+    
+      if (payload.content) {
+        stompClient.publish({
+          destination: `/user/${payload.receiverId}/queue/notifications`,
+          body: JSON.stringify(payload)
+        });
+      }
     };
 
     const formatDate = (inputDate) => {
@@ -37,7 +59,7 @@ const AppointmentCard = ({appointment, previous}) => {
     };
 
   return (
-    <div className={style.appointment_card}>
+    <div className={appointment.appointmentStatus === "COMPLETED" ? `${style.appointment_card} ${style.active}` : style.appointment_card} >
         <div className={style.wrapper}>
             <div>
                 <DoctorCard doctor={appointment.doctor} />
@@ -67,7 +89,7 @@ const AppointmentCard = ({appointment, previous}) => {
                 Are you sure you want to cancel this appointment?
               </h2>
               <div className={style.modal_buttons}>
-                <button onClick={() => handleCancel(appointment.appointmentId)}>Yes, Cancel</button>
+                <button onClick={handleCancel}>Yes, Cancel</button>
                 <button onClick={closeModal}>No, Keep</button>
               </div>
             </div>

@@ -5,7 +5,7 @@ const API_URL = "http://localhost:8080/accounts"
 const accountsAPI = {
     getDoctors: () => axios.get(`${API_URL}/doctors`),
     getAccount: (id) => axios.get(`${API_URL}/${id}`),
-    getDoctorsByKeyword: (keyword) => axios.get(`${API_URL}/doctors/${keyword}`),
+    getDoctorsByKeyword: (keyword) => axios.get(`${API_URL}/doctors/search?keyword=${keyword}`),
     getTopDoctors: () => axios.get(`${API_URL}/doctors-top`),
     createPatient: async (data) => {
         try {

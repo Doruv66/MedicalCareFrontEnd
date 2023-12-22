@@ -1,0 +1,13 @@
+.rbc-today,
+.rbc-off-range-bg,
+.rbc-now {
+    background-color: transparent !important;
+}
+
+.rbc-toolbar button {
+    color: #fff !important;
+}
+
+.rbc-day-slot .rbc-time-slot {
+    border: none !important;
+}

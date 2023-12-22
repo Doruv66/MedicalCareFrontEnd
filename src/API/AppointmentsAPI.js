@@ -22,7 +22,17 @@ const appointmentsAPI = {
         headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
         }
-    })
+    }),
+    getDoctorAppointments: (docId) => axios.get(`${API_URL}/doctor/${docId}`, {
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+    }),
+    updateAppointment: (id, requestData) => axios.put(`${API_URL}/${id}`, requestData, {
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+    }),
 
 }
 

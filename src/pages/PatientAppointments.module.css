@@ -16,9 +16,11 @@
 
 .upcoming, 
 .previous {
+    margin-left: 150px;
+    gap: 60px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     width: 1000px;
 }
 
@@ -30,7 +32,7 @@
 .patient_card {
     left: 0;
     position: fixed;
-    bottom: 215px; /* Adjust the top position as needed */
+    bottom: 215px; 
     top: 100px; 
 }
 

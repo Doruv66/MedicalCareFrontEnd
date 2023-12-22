@@ -1,9 +1,10 @@
+
 import { toast } from 'react-toastify';
 
 const Toasts = {
     success(msg) {
         return  toast.success(msg, {
-                    position: "top-right",
+                    position: "bottom-left",
                     autoClose: 3000,
                     hideProgressBar: false,
                     closeOnClick: true,
@@ -19,7 +20,7 @@ const Toasts = {
     },
     warn(msg) {
         return  toast.warn(msg, {
-                    position: "top-right",
+                    position: "bottom-left",
                     autoClose: 3000,
                     hideProgressBar: false,
                     closeOnClick: true,
@@ -35,7 +36,7 @@ const Toasts = {
     },
     info(msg) {
         return  toast.info(msg, {
-                    position: "top-right",
+                    position: "bottom-left",
                     autoClose: 3000,
                     hideProgressBar: false,
                     closeOnClick: true,
@@ -51,7 +52,7 @@ const Toasts = {
     },
     error(msg) {
         return  toast.error(msg, {
-                    position: "top-right",
+                    position: "bottom-left",
                     autoClose: 3000,
                     hideProgressBar: false,
                     closeOnClick: true,
