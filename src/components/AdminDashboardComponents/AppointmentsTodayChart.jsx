@@ -1,20 +1,30 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Chart from 'chart.js/auto';
+import appointmentsAPI from '../../API/AppointmentsAPI';
 
 const AppointmentsTodayChart = () => {
   const chartContainer = useRef(null);
   const chartInstance = useRef(null);
+  const [appointments, setAppointments] = useState([]);
+
+  const refreshData = async() => {
+    await appointmentsAPI.getAppointmentsCountForToday()
+    .then(response => setAppointments(response.data))
+    .catch(error => console.log(error))
+  }
+  useEffect(() => {
+    refreshData();
+  }, []);
 
   useEffect(() => {
     if (chartInstance.current) {
       chartInstance.current.destroy(); // Destroy the previous chart instance
     }
-
     if (chartContainer && chartContainer.current) {
       const data = {
-        labels: ['COMPLETED', 'FREE'],
+        labels: ['BOOKED', 'AVAILABLE'],
         datasets: [{
-          data: [30, 50],
+          data: [appointments.bookedAppointments, appointments.totalCountOfAppointments],
           backgroundColor: ['rgba(0, 0, 0, 0.3)', 'rgba(0, 0, 0, 0.1)']
         }]
       };
@@ -35,7 +45,7 @@ const AppointmentsTodayChart = () => {
         options: options
       });
     }
-  }, []);
+  }, [appointments]);
 
   return (
     <div>

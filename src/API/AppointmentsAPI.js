@@ -33,7 +33,16 @@ const appointmentsAPI = {
             Authorization: `Bearer ${localStorage.getItem('token')}`
         }
     }),
-
+    getAppointmentsCountForToday: () => axios.get(`${API_URL}/dashboard/donghut`, {
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+    }),
+    getAppointmentsCountPerMonth: () => axios.get(`${API_URL}/dashboard/barchart`, {
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+    }),
 }
 
 export default appointmentsAPI;

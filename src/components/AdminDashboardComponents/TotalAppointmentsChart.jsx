@@ -1,21 +1,35 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Chart from 'chart.js/auto';
+import appointmentsAPI from '../../API/AppointmentsAPI';
 
 const TotalAppointmentsChart = () => {
   const chartContainer = useRef(null);
   const chartInstance = useRef(null);
+  const [appointmentData, setAppointmentData] = useState(null);
+
+  useEffect(() => {
+    appointmentsAPI.getAppointmentsCountPerMonth()
+    .then(response => setAppointmentData(response.data.countMonth))
+    .catch(error => console.log(error))
+  }, [])
 
   useEffect(() => {
     if (chartInstance.current) {
-      chartInstance.current.destroy(); // Destroy the previous chart instance
+      chartInstance.current.destroy(); 
+    }
+    let months = undefined;
+    let counts = undefined;
+    if(appointmentData !== null){
+      months = Object.keys(appointmentData); 
+      counts = Object.values(appointmentData);
     }
 
     if (chartContainer && chartContainer.current) {
       const data = {
-        labels: ['January', 'February', 'March', 'April', 'May'],
+        labels: months,
         datasets: [{
           label: 'Appointments',
-          data: [120, 190, 150, 200, 180],
+          data: counts,
           backgroundColor: 'rgba(0, 0, 0, 0.4)', 
           borderColor: 'white', 
           borderWidth: 2,
@@ -53,7 +67,7 @@ const TotalAppointmentsChart = () => {
         options: options
       });
     }
-  }, []);
+  }, [appointmentData]);
 
   return (
     <div>

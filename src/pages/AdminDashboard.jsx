@@ -3,6 +3,7 @@ import style from './AdminDashboard.module.css'
 import AppointmentsTodayChart from '../components/AdminDashboardComponents/AppointmentsTodayChart'
 import TotalAppointmentsChart from '../components/AdminDashboardComponents/TotalAppointmentsChart'
 import { useUser } from '../components/Context/UserContext'
+import Error401 from '../components/ErrorComponents/Error401'
 
 const AdminDashboard = () => {
   const user = useUser();
@@ -16,7 +17,7 @@ const AdminDashboard = () => {
   return (
     <div className={style.dashboard}>
       <div>
-        <h1>ADMIN DASHBOARD</h1>
+        <h1>DASHBOARD</h1>
       </div>
       <div className={style.charts}>
         <div className={style.chart}>

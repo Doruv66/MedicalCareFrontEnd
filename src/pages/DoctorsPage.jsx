@@ -4,10 +4,14 @@ import DoctorsHero from '../components/DoctorsPageComponents/DoctorsHero'
 import SearchBar from '../components/DoctorsPageComponents/SearchBar'
 import DoctorCard from '../components/DoctorsPageComponents/DoctorCard'
 import AccountsAPI from '../API/AccountsAPI'
+import { useUser } from '../components/Context/UserContext'
+import { useNavigate } from 'react-router-dom'
 
 const DoctorsPage = () => {
   const [doctors, setDoctors] = useState([]);
   const [keyword, setKeyword] = useState('');
+  const navigate = useNavigate();
+  const user = useUser();
 
   const refreshDoctorsByKeyword = (keyword) => {
     AccountsAPI.getDoctorsByKeyword(keyword)
@@ -36,7 +40,16 @@ const DoctorsPage = () => {
   return (
        <div className={style.doctor_content}>
           <DoctorsHero />
-          <SearchBar setKeyword={setKeyword} keyword={keyword}/>
+          <div className={style.header_content}>
+            <SearchBar setKeyword={setKeyword} keyword={keyword}/>
+            {
+              user !== null && user.accountType === "ADMIN" 
+              && <button 
+                className={style.btn}
+                onClick={() => navigate("/adddoctor")}
+              >ADD DOCTOR</button>
+            }
+          </div>
           <ul className={style.doctors}>
             {
               doctors.length > 0 ? (

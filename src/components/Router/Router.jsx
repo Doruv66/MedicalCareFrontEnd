@@ -9,6 +9,7 @@ import PatientAppointments from "../../pages/PatientAppointments";
 import DoctorSchedule from "../../pages/DoctorSchedule";
 import AdminDashboard from "../../pages/AdminDashboard";
 import Profile from "../../pages/Profile";
+import AddDoctor from "../../pages/AddDoctor";
 function Router() {
     return (
         <Routes>
@@ -22,6 +23,7 @@ function Router() {
           <Route path="/patientappointments" element={<PatientAppointments />} />
           <Route path="/schedule" element={<DoctorSchedule />} />
           <Route path="/dashboard" element={<AdminDashboard />} />
+          <Route path="/adddoctor" element={<AddDoctor />} />
         </Routes>
     )
 }
