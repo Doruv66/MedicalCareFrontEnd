@@ -10,6 +10,7 @@ import Error401 from '../components/ErrorComponents/Error401';
 import { useUser } from '../components/Context/UserContext'
 import Toasts from '../components/Toasts/Toasts';
 import { useNavigate } from 'react-router-dom';
+import AvailabilityPicker from '../components/DoctorSchedule/AvailabilityPicker';
 
 const localizer = momentLocalizer(moment);
 
@@ -45,7 +46,6 @@ const DoctorSchedule = () => {
       })
       .catch(error => console.log(error))
       setModalIsOpen(false);
-      navigate('/');
       Toasts.success("Appointment Completed Succesfuly")
     } else {
       Toasts.warn("You can't complete the appointment before time")
@@ -84,7 +84,7 @@ const DoctorSchedule = () => {
     }, 50); 
     return () => clearTimeout(timer);
 
-  }, [user])
+  }, [user, modalIsOpen])
 
   if (user === null) {
     return <Error401 />;
@@ -96,7 +96,7 @@ const DoctorSchedule = () => {
     <div className={style.wrapper}>
       <div className={style.header}>
         <h2>WELCOME TO YOUR SCHEDULE</h2>
-        <h2>HERE THE AVAILABLIY</h2>
+        <AvailabilityPicker />
       </div>
       <div className={style.calendar}>
         <Calendar

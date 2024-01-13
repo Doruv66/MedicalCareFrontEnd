@@ -10,6 +10,18 @@ const loginAPI = {
         } catch (error) {
             throw error;
         }
+    },
+    refreshToken: async () => {
+        try {
+            const response = await axios.post(`${API_URL}/refresh-token`, null, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('refreshToken')}`
+                }
+            });
+            return response.data;
+        } catch (error) {
+            throw error;
+        }
     }
 }
 

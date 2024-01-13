@@ -7,7 +7,12 @@ const timeSlotsAPI = {
         headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
         }
-    })
+    }),
+    generateTimeSlots: (data) => axios.post(API_URL, data, {
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+    }),
 }
 
 export default timeSlotsAPI;

@@ -11,9 +11,9 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { useUser } from '../Context/UserContext';
-import accountsAPI from '../../API/AccountsAPI';
 import Toasts from '../Toasts/Toasts';
 import userValidators from '../Validators/UserValidators';
+import patientAPI from '../../API/PatientsAPI';
 
 
 
@@ -40,7 +40,7 @@ const ProfileInformation = () => {
 
   const updatePatient = (id, data) => {
     if(userValidators.validateEmail(data.email) && userValidators.validateUsername(data.username) && userValidators.validateLastName(data.lastName) && userValidators.validateName(data.firstName) && data.dateOfBirth !== null) {
-      accountsAPI.updatePatient(id, data)
+      patientAPI.updatePatient(id, data)
       .then(response => console.log(response))
       .catch(error => console.log(error));
     }

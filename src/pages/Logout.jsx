@@ -9,6 +9,7 @@ const Logout = () => {
     useEffect(() => {
         if(localStorage.getItem("token")) {
             localStorage.removeItem("token");
+            localStorage.removeItem("refreshToken");
             setUser(null);
             navigate("/");
             Toasts.info('Logged out') 

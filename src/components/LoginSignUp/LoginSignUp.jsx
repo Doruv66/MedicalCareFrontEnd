@@ -7,7 +7,9 @@ import { BiUser } from 'react-icons/bi'
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { jwtDecode } from 'jwt-decode'
 import Patient from './Patient'
-import accountsAPI from '../../API/AccountsAPI'
+import patientAPI from '../../API/PatientsAPI'
+import adminAPI from '../../API/AdminAPI'
+import doctorAPI from '../../API/DoctorAPI'
 import Login from './Login'
 import userValidators from '../Validators/UserValidators'
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
@@ -42,7 +44,7 @@ const LoginSignUp = () => {
     const handleSignUp = async (newaccount) => {
         if(userValidators.validateUsername(newaccount.username) && userValidators.validateEmail(newaccount.email) && userValidators.validatePassword(newaccount.password) && userValidators.validateLastName(newaccount.lastName) && userValidators.validateName(newaccount.firstName) && newaccount.dateOfBirth !== null) {
             try {
-                const response = await accountsAPI.createPatient(newaccount);
+                const response = await patientAPI.createPatient(newaccount);
                 Login.username = newaccount.username;
                 Login.password = newaccount.password;
                 handleLogin({username: newaccount.username, password: newaccount.password})
@@ -67,17 +69,44 @@ const LoginSignUp = () => {
             try {
                 const response = await loginAPI.login(login);
                 const token = response.accessToken;
+                const refreshToken = response.refreshToken;
                 if(token) {
                     localStorage.setItem('token', token);
+                    localStorage.setItem('refreshToken', refreshToken);
                     if(token) {
                         const parsedToken = jwtDecode(token);
                         if(parsedToken && parsedToken.accountId) {
-                            accountsAPI.getAccount(parsedToken.accountId)
-                            .then(response => updateUser(response.data.account))
-                            .catch(error => console.log(error))
+                            switch(parsedToken.role) {
+                                case "DOCTOR":
+                                    doctorAPI.getDoctor(parsedToken.accountId)
+                                    .then(response => updateUser(response.data.account))
+                                    .catch(error => console.log(error))
+                                    break;
+                                case "PATIENT":
+                                    patientAPI.getAccount(parsedToken.accountId)
+                                    .then(response => updateUser(response.data.account))
+                                    .catch(error => console.log(error))
+                                    break;
+                                case "ADMIN":
+                                    adminAPI.getAdmin(parsedToken.accountId)
+                                    .then(response => updateUser(response.data.account))
+                                    .catch(error => console.log(error))
+                                    break;
+                                }
+                        }
+                        // redirect the user based on this role 
+                        switch(parsedToken.role) {
+                            case "PATIENT": 
+                                navigate("/");
+                                break;
+                            case "DOCTOR": 
+                                navigate("/schedule");
+                                break;
+                            case "ADMIN": 
+                                navigate("/dashboard");  
+                                break;
                         }
                     }
-                    navigate("/");
                     Toasts.success('Logged in succesfuly');
                 }
             } catch (error) {
@@ -170,11 +199,13 @@ return (
                     property={Patient.password} 
                     setProperty={value => handlePatientChange('password', value)} 
                     validator={userValidators.validatePassword} 
-                    setError={setErrorMessageSignUp} errorMessage={"Password should be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number."}
+                    setError={setErrorMessageSignUp} 
+                    errorMessage={"Password should be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number."}
                 />
                 <LoginInput 
                     icon={<BsFillPersonVcardFill />} 
-                    type={"text"} name={"First Name"} 
+                    type={"text"}
+                    name={"First Name"} 
                     property={Patient.firstName} 
                     setProperty={value => handlePatientChange('firstName', value)} 
                     validator={userValidators.validateName} 

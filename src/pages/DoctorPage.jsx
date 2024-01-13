@@ -4,14 +4,14 @@ import { useParams } from 'react-router-dom'
 import DoctorWelcomeCard from '../components/DoctorPageComponents/DoctorWelcomeCard'
 import DescriptionReviews from '../components/DoctorPageComponents/DescriptionReviews'
 import DoctorTimeSlots from '../components/DoctorPageComponents/DoctorTimeSlots'
-import accountsAPI from '../API/AccountsAPI'
+import doctorAPI from '../API/DoctorAPI'
 
 
 const DoctorPage = () => {
   const { id } = useParams();
   const [doctor, setDoctor] = useState(null);
   const getDoctor = (id) => {
-    accountsAPI.getAccount(id)
+    doctorAPI.getDoctor(id)
     .then((response) => {
       setDoctor(response.data.account)
     })

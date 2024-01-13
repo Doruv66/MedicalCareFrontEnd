@@ -55,7 +55,6 @@ const BookAppointmentCard = ({doctor}) => {
         console.error("WebSocket client not connected.");
         return;
       }
-      console.log(date)
       const payload = {
         'content': `You have a new appointment booked on ${new Date(date).toISOString().split('T')[0]}`,
         'receiverId': doctorId

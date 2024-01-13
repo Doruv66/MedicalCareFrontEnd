@@ -4,7 +4,6 @@ import { AiTwotoneStar } from 'react-icons/ai'
 import reviewsAPI from '../../API/ReviewsAPI'
 
 const DoctorWelcomeCard = ({doctor}) => {
-  const [image, setImage] = useState(null);
   const [average, setAverage] = useState(0);
 
   const refreshAverage = (doctorid) => {
@@ -16,18 +15,13 @@ const DoctorWelcomeCard = ({doctor}) => {
   }
 
   useEffect(() => {
-    const importImage = async () => {
-      const imageModule = await import(`../../assets/${doctor.photo}.png`);
-      setImage(imageModule.default);
-    };
-    importImage();
     refreshAverage(doctor.accountId);
   }, [])
 
   return (
     <div className={style.doctor_card}>
       <div className={style.image}>
-        <img src={image} alt="" />
+        <img src={doctor.photo} alt="" />
       </div>
       <div>
       <div className={style.information}>
@@ -37,7 +31,7 @@ const DoctorWelcomeCard = ({doctor}) => {
             </div>
             <div className={style.reviews}>
                 <AiTwotoneStar className={style.star}/> 
-                {average.toFixed(1)}
+                {average ? average.toFixed(1) : "-"}
             </div>
             <p>Specialization in {doctor.specialization}</p>
         </div>

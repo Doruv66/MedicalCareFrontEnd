@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import style from './ReviewCard.module.css'
-import accountsAPI from '../../API/AccountsAPI';
 import { AiTwotoneStar } from 'react-icons/ai'
+import patientAPI from '../../API/PatientsAPI';
 
 const ReviewCard = ({review}) => {
     
@@ -9,7 +9,7 @@ const ReviewCard = ({review}) => {
     const [date, setDate] = useState(null);
 
     const refreshAccount = (id) => {
-        accountsAPI.getAccount(id)
+        patientAPI.getAccount(id)
         .then((response) => {
             setAccount(response.data.account);
         })

@@ -20,10 +20,8 @@ export const WebSocketProvider = ({ children, user }) => {
     });
 
     client.onConnect = () => {
-      console.log('Connected to WebSocket');
       client.subscribe(`/user/${user.accountId}/queue/notifications`, (data) => {
         const notification = JSON.parse(data.body);
-        console.log('Notification received:', notification);
         Toasts.info(<a href="/schedule" style={{textDecoration: 'none', color: '#fff'}}>{notification.content}</a>)
       });
     };

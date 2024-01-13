@@ -3,10 +3,10 @@ import { useEffect, useState } from 'react';
 import style from './BookAppointment.module.css'
 import { useNavigate, useParams } from 'react-router-dom'
 import DoctorWelcomeCard from '../components/DoctorPageComponents/DoctorWelcomeCard';
-import accountsAPI from '../API/AccountsAPI';
 import BookAppointmentCard from '../components/BookAppointmentComponents/BookAppointmentCard';
 import { useUser } from '../components/Context/UserContext';
 import Error401 from '../components/ErrorComponents/Error401';
+import doctorAPI from '../API/DoctorAPI';
 
 const BookAppointment = () => {
   const { doctorId } = useParams();
@@ -15,7 +15,7 @@ const BookAppointment = () => {
   const navigate = useNavigate();
 
   const getDoctor = (id) => {
-      accountsAPI.getAccount(id)
+      doctorAPI.getDoctor(id)
           .then((response) => {
               setDoctor(response.data.account);
           })

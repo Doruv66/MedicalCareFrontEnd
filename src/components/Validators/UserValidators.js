@@ -18,6 +18,10 @@ const userValidators = {
     validateName(value) {
         const nameRegex = /^[A-Za-z]+$/;
         return nameRegex.test(value);
+    },
+    validateDescription(value) {
+        const descriptionRegex = /^.{50,}$/;
+        return descriptionRegex.test(value);
     }
 }
 export default userValidators;

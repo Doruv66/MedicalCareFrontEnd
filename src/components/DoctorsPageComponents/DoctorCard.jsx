@@ -8,7 +8,6 @@ import VanillaTilt from 'vanilla-tilt';
 
 const DoctorCard = ({ doctor }) => {
   const navigate = useNavigate();
-  const [image, setImage] = useState(null);
   const [average, setAverage] = useState(0);
   const cardRef = useRef(null);
 
@@ -21,12 +20,6 @@ const DoctorCard = ({ doctor }) => {
   };
 
   useEffect(() => {
-    const importImage = async () => {
-      const imageModule = await import(`../../assets/${doctor.photo}.png`);
-      setImage(imageModule.default);
-    };
-
-    importImage();
     refreshAverage(doctor.accountId);
 
     if (cardRef.current) {
@@ -47,7 +40,7 @@ const DoctorCard = ({ doctor }) => {
 
   return (
     <div className={style.card} ref={cardRef}>
-      <img src={image} alt="doctor image" />
+      <img src={doctor.photo} alt="doctor image" />
       <div className={style.name}>
         <h3>Dr. {doctor.firstName} {doctor.lastName}</h3>
       </div>
@@ -57,7 +50,7 @@ const DoctorCard = ({ doctor }) => {
         </div>
         <div className={style.reviews}>
           <AiTwotoneStar className={style.star} />
-          {average.toFixed(1)}
+          {average ? average.toFixed(1) : "-"}
         </div>
       </div>
       <div className={style.btn}>

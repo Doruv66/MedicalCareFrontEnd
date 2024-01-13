@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import style from './TopDoctors.module.css'
-import accountsAPI from '../../API/AccountsAPI';
 import DoctorCard from '../DoctorsPageComponents/DoctorCard';
+import doctorAPI from '../../API/DoctorAPI';
 
 const TopDoctors = () => {
     const [doctors, setDoctors] = useState([]);
 
     const refreshTopDoctors = () => {
-        accountsAPI.getTopDoctors()
+        doctorAPI.getTopDoctors()
         .then(response => setDoctors(Object.values(response.data.accounts)))
         .catch(error => console.log(error))
     }
