@@ -30,19 +30,9 @@ const BookAppointment = () => {
 
   useEffect(() => {
       if (user === null) {
-          const redirectTimer = setTimeout(() => {
-              navigate('/login');
-          }, 3000);
-
-          return () => clearTimeout(redirectTimer);
+        navigate('/login');
       }
   }, [navigate]);
-
-  if (user === null) {
-    return <Error401 />;
-  } else if (user.accountType !== "PATIENT") {
-    return <Error401 />;
-  }
   
 
   return (

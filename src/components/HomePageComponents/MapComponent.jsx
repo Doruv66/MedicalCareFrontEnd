@@ -1,7 +1,7 @@
 import React from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import style from './MapComponent.module.css';
-import gif from '../../assets/map.gif';
+import img from '../../assets/hospitalImage.jpeg';
 import 'leaflet/dist/leaflet.css'
 
 const MapComponent = () => {
@@ -24,7 +24,12 @@ const MapComponent = () => {
             </Marker>
           </MapContainer>
         </div>
-        <img src={gif} alt="map gif" />
+        <div>
+          <div className={style.image}>
+            <img src={img} alt="hospital image" />
+            <h2>Address: Antoon Coolenlaan 1</h2>
+          </div>
+        </div>
       </div>
     </div>
   );
