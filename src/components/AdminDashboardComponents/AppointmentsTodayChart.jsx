@@ -21,7 +21,7 @@ const AppointmentsTodayChart = () => {
       chartInstance.current.destroy(); // Destroy the previous chart instance
     }
     if (chartContainer && chartContainer.current) {
-      const data = {
+      const data = {  
         labels: ['BOOKED', 'AVAILABLE'],
         datasets: [{
           data: [appointments.bookedAppointments, appointments.totalCountOfAppointments],

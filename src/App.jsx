@@ -7,8 +7,12 @@ import  Footer  from './components/Footer/Footer'
 import { useUser } from './components/Context/UserContext';
 import { ToastContainer } from 'react-toastify'
 import { WebSocketProvider } from './components/Context/WebSocketContext';
+import MedicalChatBot from './components/ChatBot/MedicalChatBot';
+
 function App() {
   const user = useUser();
+
+  
 
   return (
     <WebSocketProvider user={user}>
@@ -16,6 +20,7 @@ function App() {
           <BrowserRouter>
               <NavBar />
                 <Router/>
+                {user !== null && user.accountType === "PATIENT" && <MedicalChatBot />}
               <Footer />
               <ToastContainer toastStyle={{
                         fontSize: "15px",

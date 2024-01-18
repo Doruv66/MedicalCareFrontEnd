@@ -1,0 +1,1 @@
+export const OpenAIAPIKey = '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';

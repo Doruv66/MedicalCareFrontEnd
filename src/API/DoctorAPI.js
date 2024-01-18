@@ -9,7 +9,16 @@ const doctorAPI = {
           pageNumber: pageNumber,
           pageSize: pageSize
         }
-      }),
+    }),
+    getDoctorsBySpeciality: (speciality) => 
+        axios.get(`${API_URL}/speciality`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            },
+            params: {
+                speciality: speciality
+            }
+        }),
     getDoctorsByKeyword: (keyword) => axios.get(`${API_URL}/search?keyword=${keyword}`),
     getTopDoctors: () => axios.get(`${API_URL}/top`),
     createDoctor: async (data) => {

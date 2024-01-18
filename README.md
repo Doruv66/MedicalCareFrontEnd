@@ -27,6 +27,16 @@ https://dorianvieru.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog
 
 https://docs.google.com/document/d/1h83ET70vEXiRPgcXJrI_pSquHtDmHABSqnQsSP1YEkU/edit
 
+
+## WOASP
+
+https://docs.google.com/document/d/1QZpvZOZ3PVEitI5NI1L_H9jt4WfMkL-3xSEivHkkOus/edit?usp=sharing
+
+## UI/UX REPORT 
+
+https://docs.google.com/document/d/1D6H4OAI_V-yf8n-H2Zzxp6RX1GBJJeaN0S1ZqpSuXI8/edit?usp=sharing
+
+
 ## BackEnd
 
 https://git.fhict.nl/I507644/medicalcarebackend
